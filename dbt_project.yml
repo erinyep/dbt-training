@@ -32,7 +32,9 @@ clean-targets: # directories to be removed by `dbt clean`
 # instead be materialized as tables. Any models you add to the root of the models folder will
 # continue to be built as views. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
-
+vars:
+  surrogate_key_treat_nulls_as_empty_strings: true
+  
 models:
   globalmart:
     # Applies to all files under models/example/
@@ -42,3 +44,4 @@ models:
       +materialized: view
     reporting:
       +materialized: table
+      
